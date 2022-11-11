@@ -6,12 +6,6 @@ namespace dsc
 {
 	namespace tests
 	{
-		/*
-			virtual ~TaggedObject() = default;
-			virtual std::list<std::string> const& tags() const;
-			virtual bool hasTag(std::string const& tag) const;
-			virtual bool hasTags(std::list<std::string> const& tags) const;
-		*/
 		static std::list<std::string> const kTestList( {"test1", "test2", "banana", "apple", "toucan", "penguin", "hummingbird" });
 
 		
