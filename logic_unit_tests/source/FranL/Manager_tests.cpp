@@ -24,17 +24,17 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 			
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			ASSERT_EQ(no.objects(), std::list{ kTestString });
 		}
 		TEST(Manager, Manager_removeByValue)
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			EXPECT_EQ(no.objects(), std::list{ kTestString });
 
-			EXPECT_EQ(no.remove(kTestString), true);
+			ASSERT_EQ(no.remove(kTestString), true);
 			ASSERT_EQ(no.objects().empty(), true);
 		}
 
@@ -42,10 +42,10 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			EXPECT_EQ(no.objects(), std::list{ kTestString });
 
-			EXPECT_EQ(no.remove(0), true);
+			ASSERT_EQ(no.remove(0), true);
 			ASSERT_EQ(no.objects().empty(), true);
 		}
 
@@ -53,7 +53,7 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			EXPECT_EQ(no.objects(), std::list{kTestString});
 
 			no.removeAll();
@@ -64,7 +64,7 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			EXPECT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.find(dsc::tests::isTestString), kTestString);
 		}
@@ -73,7 +73,7 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
 			EXPECT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.at(0), kTestString);
 		}
@@ -82,8 +82,8 @@ namespace dsc
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), std::list{ kTestString });
+			ASSERT_EQ(no.add(std::move(kTestString)), true);
+			ASSERT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.random(), kTestString);
 		}
 
