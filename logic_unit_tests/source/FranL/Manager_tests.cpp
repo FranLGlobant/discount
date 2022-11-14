@@ -9,7 +9,7 @@ namespace dsc
 		static std::list<std::string> const kTestList( {"test1", "test2", "banana", "apple", "toucan", "penguin", "hummingbird" });
 		static std::string kTestString("testString");
 
-		static bool isTestString(std::string& const input)
+		static bool isTestString(std::string const& input)
 		{
 			return input == kTestString;
 		};
@@ -25,25 +25,25 @@ namespace dsc
 			dsc::Manager<std::string> no;
 			
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			ASSERT_EQ(no.objects(), { kTestString });
+			ASSERT_EQ(no.objects(), std::list{ kTestString });
 		}
 		TEST(Manager, Manager_removeByValue)
 		{
 			dsc::Manager<std::string> no;
 
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), { kTestString });
+			EXPECT_EQ(no.objects(), std::list{ kTestString });
 
 			EXPECT_EQ(no.remove(kTestString), true);
-			ASSERT_EQ(no.objects(), { });
+			ASSERT_EQ(no.objects().empty(), true);
 		}
 
 		TEST(Manager, Manager_removeByRef)
 		{
 			dsc::Manager<std::string> no;
 
-			EXPECT_EQ(no.add(kTestSstd::move(kTestString)tring), true);
-			EXPECT_EQ(no.objects(), { kTestString });
+			EXPECT_EQ(no.add(std::move(kTestString)), true);
+			EXPECT_EQ(no.objects(), std::list{ kTestString });
 
 			EXPECT_EQ(no.remove(0), true);
 			ASSERT_EQ(no.objects().empty(), true);
@@ -54,7 +54,7 @@ namespace dsc
 			dsc::Manager<std::string> no;
 
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), {kTestString});
+			EXPECT_EQ(no.objects(), std::list{kTestString});
 
 			no.removeAll();
 			ASSERT_EQ(no.objects().empty(), true);
@@ -65,7 +65,7 @@ namespace dsc
 			dsc::Manager<std::string> no;
 
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), { kTestString });
+			EXPECT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.find(dsc::tests::isTestString), kTestString);
 		}
 
@@ -74,7 +74,7 @@ namespace dsc
 			dsc::Manager<std::string> no;
 
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), { kTestString });
+			EXPECT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.at(0), kTestString);
 		}
 
@@ -83,7 +83,7 @@ namespace dsc
 			dsc::Manager<std::string> no;
 
 			EXPECT_EQ(no.add(std::move(kTestString)), true);
-			EXPECT_EQ(no.objects(), { kTestString });
+			EXPECT_EQ(no.objects(), std::list{ kTestString });
 			ASSERT_EQ(no.random(), kTestString);
 		}
 
