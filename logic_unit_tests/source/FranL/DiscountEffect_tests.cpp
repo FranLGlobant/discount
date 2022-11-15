@@ -50,7 +50,7 @@ namespace dsc
 		
 		TEST(DiscountEffect, DiscountEffect_apply)
 		{
-			dsc::DiscountEffect n;
+			dsc::DiscountEffect no;
 			ASSERT_EQ(no.apply(kTestShoppingBasket,kTestShoppingBasketItem), kTestResultValue);
 		}
 		
