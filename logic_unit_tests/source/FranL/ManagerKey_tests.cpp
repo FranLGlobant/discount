@@ -13,6 +13,7 @@ namespace dsc
 			return input;
 		};
 		
+		/*
 		TEST(ManagerKey, ManagerKey_get)
 		{
 			dsc::ManagerKey<std::string, std::string> no(kTestKeyGetter);
@@ -20,6 +21,7 @@ namespace dsc
 
 			ASSERT_EQ(no.get(kTestString), kTestString);
 		}
+		*/
 		
 		
 

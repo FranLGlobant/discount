@@ -25,7 +25,7 @@ public:
 		return false;
 	}
 
-	bool remove(std::list<T>::size_type atIndex)
+	bool remove(typename std::list<T>::size_type atIndex)
 	{
 		return false;
 	}
@@ -36,32 +36,32 @@ public:
 
 	T const& find(std::function<bool(T const&)> const& predicate) const
 	{
-		return {};
+		return T{};
 	}
 
 	T& find(std::function<bool(T const&)> const& predicate)
 	{
-		return {};
+		return T{};
 	}
 
-	T const& at(std::list<T>::size_type index) const
+	T const& at(typename std::list<T>::size_type index) const
 	{
-		return {};
+		return T{};
 	}
 
-	T& at(std::list<T>::size_type index)
+	T& at(typename std::list<T>::size_type index)
 	{
-		return {};
+		return T{};
 	}
 
 	T const& random() const
 	{
-		return {};
+		return T{};
 	}
 
 	T& random()
 	{
-		return {};
+		return T{};
 	}
 };
 
