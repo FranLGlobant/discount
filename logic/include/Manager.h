@@ -10,9 +10,28 @@ template<class T>
 class Manager
 {
 public:
+	template <class _T = T, typename std::enable_if_t<std::is_default_constructible_v<_T>, bool> = true>
+	Manager()
+	{
+	}
+
+	template <class _T = T, typename std::enable_if_t<std::is_move_constructible_v<_T>, bool> = true>
+	Manager(_T const& nullObject):
+		mNull(nullObject)
+	{
+	}
+
+	template <class _T = T, typename std::enable_if_t<std::is_move_constructible_v<_T>, bool> = true>
+	Manager(T&& nullValue):
+		mNull(std::forward<T>(nullValue))
+	{
+	}
+
+	Manager(Manager const& other) = delete;
+
 	std::list<T> const& objects() const
 	{
-		return {};
+		return mEmptyList;
 	}
 
 	bool add(T&& obj)
@@ -36,33 +55,38 @@ public:
 
 	T const& find(std::function<bool(T const&)> const& predicate) const
 	{
-		return T{};
+		return mNull;
 	}
 
 	T& find(std::function<bool(T const&)> const& predicate)
 	{
-		return T{};
+		return mNull;
 	}
 
 	T const& at(typename std::list<T>::size_type index) const
 	{
-		return T{};
+		return mNull;
 	}
 
 	T& at(typename std::list<T>::size_type index)
 	{
-		return T{};
+		return mNull;
 	}
 
 	T const& random() const
 	{
-		return T{};
+		return mNull;
 	}
 
 	T& random()
 	{
-		return T{};
+		return mNull;
 	}
+
+protected:
+
+	T mNull;
+	std::list<T> mEmptyList;
 };
 
 } // namespace dsc
